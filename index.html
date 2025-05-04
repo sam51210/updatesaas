@@ -1,0 +1,29 @@
+<head>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const prefix = "/sams_anarchy_server_setup-"; // Change this to your desired prefix
+    const currentHost = window.location.host;
+
+    const links = Array.from(document.querySelectorAll("a"));
+    
+    const match = links.find(link => {
+      const href = link.getAttribute("href");
+      if (!href) return false;
+
+      const url = new URL(href, window.location.origin);
+
+      // Check if link is internal and href starts with the prefix
+      return url.host === currentHost && url.pathname.startsWith(prefix);
+    });
+
+    if (match) {
+      window.location.href = match.href;
+    } else {
+      console.log("No internal link with that prefix found.");
+    }
+  });
+</script>
+</head>
+<body>
+<p>downloading the mod now! if it didnt download then you might need javascript</p>
+</body>
